@@ -17,10 +17,7 @@ router.get("/", (req, res) => {
 // @access Public
 
 router.post("/", (req, res) => {
-  const newItem = new Item({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName
-  });
+  const newItem = new Item(req.body);
 
   newItem.save().then(item => res.json(item));
 });
@@ -46,4 +43,10 @@ module.exports = router;
 //       res.send({ error: "" });
 //     }
 //   });
+// });
+
+//router.get("/import", (req, res) => {
+//   Item.insertMany([
+
+//   ]).then(items => res.json(items));
 // });

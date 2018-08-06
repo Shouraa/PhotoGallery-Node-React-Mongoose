@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
-class AddNew extends Components {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-}
+const AddNew = props => {
+  return <h1>Add New Page</h1>;
+};
+
+export default AddNew;

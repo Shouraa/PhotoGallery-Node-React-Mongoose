@@ -10,22 +10,25 @@ import {
 
 const NavBar = () => {
   return (
-    <Router>
-      <div>
-        <ul>
-          <li>
-            <NavLink exact to="/api/items">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/api/items">
-              AddNew
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-    </Router>
+    <div>
+      <ul>
+        <li>
+          <NavLink exact to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact to="/AddNew">
+            Add New Student
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact to="/Student">
+            Student Detail Page
+          </NavLink>
+        </li>
+      </ul>
+    </div>
   );
 };
 
