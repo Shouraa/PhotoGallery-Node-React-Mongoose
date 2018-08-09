@@ -35,7 +35,7 @@ class App extends Component {
 
   componentDidMount() {
     // this.getItemsFromAPI();
-    this.setState({ students: this.getItemsFromAPI() });
+    this.getItemsFromAPI().then(students => this.setState({ students }));
   }
   render() {
     return (
@@ -44,12 +44,20 @@ class App extends Component {
           <div>
             <NavBar />
             <switch>
-              <Route exact path="/" render={props => <Students {...props} />} />
+              <Route
+                exact
+                path="/"
+                render={props => (
+                  <Students {...props} students={this.state.students} />
+                )}
+              />
 
               <Route
                 exact
-                path="/Student"
-                render={props => <Student {...props} />}
+                path="/Student/:index"
+                render={props => (
+                  <Student {...props} students={this.state.students} />
+                )}
               />
               <Route
                 exact
