@@ -14,7 +14,7 @@ import Students from "./components/Students";
 import Student from "./components/Student";
 import AddNew from "./components/AddNew";
 
-const axiosInstance = axios.create({ baseURL: "http://localhost:5000/" });
+// const axiosInstance = axios.create({ baseURL: "http://localhost:5000/" });
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   async getItemsFromAPI() {
-    const res = await axiosInstance.get("/api/items");
+    const res = await axios.get("/api/items");
     const result = await res.data;
     // this.props.getData(res.data);
     console.log(res.data);
