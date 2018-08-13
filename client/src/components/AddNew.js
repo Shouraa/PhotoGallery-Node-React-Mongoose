@@ -30,25 +30,37 @@ class AddNew extends Component {
     e.preventDefault();
     console.log("submitted", this.state.firstName);
     const formData = new FormData();
-    
-    const studentInfo = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      title: this.state.title,
-      nationality: this.state.nationality,
-      whySofterDeveloper: this.state.whySofterDeveloper,
-      longTermVision: this.state.longTermVision,
-      motivatesMe: this.state.motivatesMe,
-      joinedOn: this.state.joinedOn,
-      skills: this.state.skills,
-      studentImg: this.state
-    };
-    formData.append("studentInfo", studentInfo);
+
+    // const studentInfo = {
+    //   firstName: this.state.firstName,
+    //   lastName: this.state.lastName,
+    //   title: this.state.title,
+    //   nationality: this.state.nationality,
+    //   whySofterDeveloper: this.state.whySofterDeveloper,
+    //   longTermVision: this.state.longTermVision,
+    //   motivatesMe: this.state.motivatesMe,
+    //   joinedOn: this.state.joinedOn,
+    //   skills: this.state.skills,
+    //   studentImg: this.state.studentImg
+    // };
+    formData.append("firstName", this.state.firstName);
+    formData.append("lastName", this.state.lastName);
+    formData.append("title", this.state.title);
+    formData.append("nationality", this.state.nationality);
+    formData.append("whySofterDeveloper", this.state.whySofterDeveloper);
+    formData.append("longTermVision", this.state.longTermVision);
+    formData.append("motivatesMe", this.state.motivatesMe);
+    formData.append("joinedOn", this.state.joinedOn);
+    formData.append("skills", this.state.skills);
+    formData.append("studentImg", this.state.studentImg);
+
     this.sendStudentToApi(formData);
   };
 
   async sendStudentToApi(studentInfo) {
-    const res = await axios.post("/api/items", studentInfo, {"contentType": "multipart/form-data"});
+    const res = await axios.post("/api/items", studentInfo, {
+      contentType: "multipart/form-data"
+    });
     const result = await res.data;
 
     console.log(res.data);
@@ -73,7 +85,7 @@ class AddNew extends Component {
       <div>
         <h1>Add New Student</h1>
 
-        <form >
+        <form>
           <input
             type="text"
             className="form-control"
@@ -112,6 +124,7 @@ class AddNew extends Component {
           />
           <input
             type="hidden"
+            student
             className="form-control"
             id="src"
             name="src"
@@ -128,9 +141,9 @@ class AddNew extends Component {
             Upload Your Picture
             <input
               type="file"
-              id="studentPicture"
-              name="studentPicture"
-              onChange = {e => this.setState({ student: e.target.files[0] })};
+              id="studentImg"
+              name="studentImg"
+              onChange={e => this.setState({ studentImg: e.target.files[0] })}
               multiple
             />
           </label>

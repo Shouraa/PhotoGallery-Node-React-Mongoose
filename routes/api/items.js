@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const upload = multer({ dest: "images/" });
 
 //Item Model
 const Item = require("../../models/item");
@@ -16,8 +18,9 @@ router.get("/", (req, res) => {
 // @desc Create an Item
 // @access Public
 
-router.post("/", (req, res) => {
+router.post("/", upload.single("studentImg"), (req, res) => {
   const newItem = new Item(req.body);
+  console.log(req.body);
 
   newItem.save().then(item => res.json(item));
 });
